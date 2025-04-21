@@ -65,6 +65,26 @@ const OPENAI_MODELS: ModelConfigurationParams[] = [
     isNew: false,
   },
   {
+    name: "o4-mini",
+    label: "o4 mini",
+    config: {
+      provider: "openai",
+      temperatureRange: {
+        min: 0,
+        max: 1,
+        default: 0.5,
+        current: 0.5,
+      },
+      maxTokens: {
+        min: 1,
+        max: 100000,
+        default: 4096,
+        current: 4096,
+      },
+    },
+    isNew: true,
+  },
+  {
     name: "gpt-4.5-preview",
     label: "GPT 4.5",
     config: {
@@ -415,7 +435,7 @@ export const THINKING_MODELS = [
 ];
 
 export const ALL_MODELS: ModelConfigurationParams[] = [
-  OPENAI_MODELS.find(model => model.name === "gpt-4o-mini"),
+  OPENAI_MODELS.find(model => model.name === "o4-mini"),
   ...GEMINI_MODELS,
 ].filter(Boolean) as ModelConfigurationParams[];
 
@@ -435,9 +455,9 @@ export type ALL_MODEL_NAMES =
   | OLLAMA_MODEL_NAMES
   | GROQ_MODEL_NAMES;
 
-export const DEFAULT_MODEL_NAME: ALL_MODEL_NAMES = "gpt-4o-mini";
+export const DEFAULT_MODEL_NAME: ALL_MODEL_NAMES = "o4-mini";
 export const DEFAULT_MODEL_CONFIG: CustomModelConfig = {
-  ...OPENAI_MODELS.find(model => model.name === "gpt-4o-mini")!.config,
-  temperatureRange: { ...OPENAI_MODELS.find(model => model.name === "gpt-4o-mini")!.config.temperatureRange },
-  maxTokens: { ...OPENAI_MODELS.find(model => model.name === "gpt-4o-mini")!.config.maxTokens },
+  ...OPENAI_MODELS.find(model => model.name === "o4-mini")!.config,
+  temperatureRange: { ...OPENAI_MODELS.find(model => model.name === "o4-mini")!.config.temperatureRange },
+  maxTokens: { ...OPENAI_MODELS.find(model => model.name === "o4-mini")!.config.maxTokens },
 };
