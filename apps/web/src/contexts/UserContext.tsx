@@ -1,4 +1,3 @@
-import { createSupabaseClient } from "@/lib/supabase/client";
 import { User } from "@supabase/supabase-js";
 import {
   createContext,
@@ -7,6 +6,14 @@ import {
   useEffect,
   useState,
 } from "react";
+
+const mockUser: User = {
+  id: "mock-user-id",
+  app_metadata: {},
+  user_metadata: {},
+  aud: "authenticated",
+  created_at: new Date().toISOString(),
+};
 
 type UserContentType = {
   getUser: () => Promise<User | undefined>;
@@ -32,14 +39,10 @@ export function UserProvider({ children }: { children: ReactNode }) {
       return user;
     }
 
-    const supabase = createSupabaseClient();
-
-    const {
-      data: { user: supabaseUser },
-    } = await supabase.auth.getUser();
-    setUser(supabaseUser || undefined);
+    console.log("Auth route disabled: Using mock user");
+    setUser(mockUser);
     setLoading(false);
-    return supabaseUser || undefined;
+    return mockUser;
   }
 
   const contextValue: UserContentType = {

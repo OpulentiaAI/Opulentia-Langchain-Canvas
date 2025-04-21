@@ -1,8 +1,8 @@
 {
   "name": "@opencanvas/web",
   "author": "Brace Sproul",
-  "homepage": "https://opencanvas.langchain.com",
-  "repository": "https://github.com/langchain-ai/open-canvas",
+  "homepage": "https://opulentia.ai",
+  "repository": "https://github.com/OpulentiaAI/open-canvas",
   "version": "0.0.1",
   "private": true,
   "scripts": {
