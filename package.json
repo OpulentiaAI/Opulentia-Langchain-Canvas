@@ -2,7 +2,7 @@
   "name": "open_canvas",
   "author": "Brace Sproul",
   "homepage": "https://opulentia.ai",
-  "repository": "https://github.com/OpulentiaAI/open-canvas",
+  "repository": "https://github.com/OpulentiaAI/Opulentia-Langchain-Canvas",
   "private": true,
   "workspaces": ["apps/*", "packages/*"],
   "scripts": {
