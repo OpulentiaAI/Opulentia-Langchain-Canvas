@@ -8,7 +8,7 @@ import { getArtifactContent } from "@opencanvas/shared/utils/artifacts";
 import { isArtifactCodeContent } from "@opencanvas/shared/utils/artifacts";
 import { useToast } from "@/hooks/use-toast";
 
-interface AskOpenCanvasProps {
+interface AskOpulentiaCanvasProps {
   isInputVisible: boolean;
   selectionBox: { top: number; left: number };
   setIsInputVisible: (visible: boolean) => void;
@@ -21,7 +21,7 @@ interface AskOpenCanvasProps {
   setInputValue: Dispatch<SetStateAction<string>>;
 }
 
-export const AskOpenCanvas = forwardRef<HTMLDivElement, AskOpenCanvasProps>(
+export const AskOpenCanvas = forwardRef<HTMLDivElement, AskOpulentiaCanvasProps>(
   (props, ref) => {
     const { toast } = useToast();
 
@@ -96,7 +96,7 @@ export const AskOpenCanvas = forwardRef<HTMLDivElement, AskOpenCanvasProps>(
           >
             <Input
               className="w-full transition-all duration-300 focus:ring-0 ease-in-out p-1 focus:outline-none border-0 focus-visible:ring-0"
-              placeholder="Ask Open Canvas..."
+              placeholder="Ask Opulentia Canvas..."
               autoFocus
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
@@ -121,7 +121,7 @@ export const AskOpenCanvas = forwardRef<HTMLDivElement, AskOpenCanvasProps>(
             onClick={() => setIsInputVisible(true)}
             className="transition-all duration-300 ease-in-out w-full"
           >
-            Ask Open Canvas
+            Ask Opulentia Canvas
           </Button>
         )}
       </div>
