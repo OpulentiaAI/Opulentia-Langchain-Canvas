@@ -363,48 +363,8 @@ const GROQ_MODELS: ModelConfigurationParams[] = [
 
 const GEMINI_MODELS: ModelConfigurationParams[] = [
   {
-    name: "gemini-1.5-flash",
-    label: "Gemini 1.5 Flash",
-    config: {
-      provider: "google-genai",
-      temperatureRange: {
-        min: 0,
-        max: 1,
-        default: 0.5,
-        current: 0.5,
-      },
-      maxTokens: {
-        min: 1,
-        max: 8192,
-        default: 4096,
-        current: 4096,
-      },
-    },
-    isNew: false,
-  },
-  {
-    name: "gemini-2.0-flash",
-    label: "Gemini 2.0 Flash",
-    config: {
-      provider: "google-genai",
-      temperatureRange: {
-        min: 0,
-        max: 1,
-        default: 0.5,
-        current: 0.5,
-      },
-      maxTokens: {
-        min: 1,
-        max: 1048576,
-        default: 4096,
-        current: 4096,
-      },
-    },
-    isNew: true,
-  },
-  {
-    name: "gemini-2.0-flash-thinking-exp-01-21",
-    label: "Gemini 2.0 Flash Thinking",
+    name: "gemini-2.5-pro",
+    label: "Gemini 2.5 Pro",
     config: {
       provider: "google-genai",
       temperatureRange: {
@@ -455,14 +415,9 @@ export const THINKING_MODELS = [
 ];
 
 export const ALL_MODELS: ModelConfigurationParams[] = [
-  ...OPENAI_MODELS,
-  ...ANTHROPIC_MODELS,
-  ...FIREWORKS_MODELS,
+  OPENAI_MODELS.find(model => model.name === "gpt-4o-mini"),
   ...GEMINI_MODELS,
-  ...AZURE_MODELS,
-  ...OLLAMA_MODELS,
-  ...GROQ_MODELS,
-];
+].filter(Boolean) as ModelConfigurationParams[];
 
 type OPENAI_MODEL_NAMES = (typeof OPENAI_MODELS)[number]["name"];
 type ANTHROPIC_MODEL_NAMES = (typeof ANTHROPIC_MODELS)[number]["name"];
@@ -480,9 +435,9 @@ export type ALL_MODEL_NAMES =
   | OLLAMA_MODEL_NAMES
   | GROQ_MODEL_NAMES;
 
-export const DEFAULT_MODEL_NAME: ALL_MODEL_NAMES = OPENAI_MODELS[1].name;
+export const DEFAULT_MODEL_NAME: ALL_MODEL_NAMES = "gpt-4o-mini";
 export const DEFAULT_MODEL_CONFIG: CustomModelConfig = {
-  ...OPENAI_MODELS[1].config,
-  temperatureRange: { ...OPENAI_MODELS[1].config.temperatureRange },
-  maxTokens: { ...OPENAI_MODELS[1].config.maxTokens },
+  ...OPENAI_MODELS.find(model => model.name === "gpt-4o-mini")!.config,
+  temperatureRange: { ...OPENAI_MODELS.find(model => model.name === "gpt-4o-mini")!.config.temperatureRange },
+  maxTokens: { ...OPENAI_MODELS.find(model => model.name === "gpt-4o-mini")!.config.maxTokens },
 };
